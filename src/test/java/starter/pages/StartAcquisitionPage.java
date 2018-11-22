@@ -8,38 +8,37 @@ import org.assertj.core.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 import java.util.Optional;
 
 @Slf4j
-@DefaultUrl("https://www.scottishpower.co.uk/energyquote.process?execution=e1s1")
+//@DefaultUrl("https://quote.scottishpower.co.uk/#/acquisitions")
 public class StartAcquisitionPage extends PageObject {
 
     @FindBy(id = "postcode")
-    WebElement search;
+    WebElement postcodeField;
 
     @FindBy(id = "address")
-    WebElement address;
+    WebElement addressList;
 
-    @FindBy(xpath = "//form[@id='getAQuote']/div/a")
-    WebElement submitButton;
+    @FindBy(xpath = "//button[text() = 'Continue']")
+    WebElement continueButton;
 
-    public void submit() {
-        submitButton.click();
+    @FindBy(xpath = "//button[text() = 'Close']")
+    WebElement cookiePanelcloseButton;
+
+    public void submitSelectedAddress() {
+        continueButton.click();
     }
 
     public void searchFor(String keywords) {
-        search.sendKeys(keywords, Keys.ENTER);
-        log.debug("Waiting for address dropdown to become enabled");
-//        waitForAbsenceOf("//*[@disabled]");
-        log.debug("Address dropdown enabled");
+        postcodeField.sendKeys(keywords, Keys.ENTER);
     }
 
     public void selectAddress(String fullAddress) {
-        List<WebElement> elements = address.findElements(By.xpath("//option"));
+        List<WebElement> elements = addressList.findElements(By.xpath("//option"));
         final Optional<WebElement> first = elements.stream().filter(x -> fullAddress.equals(x.getText())).findFirst();
         if (first.isPresent()) {
             first.get().click();
@@ -49,16 +48,20 @@ public class StartAcquisitionPage extends PageObject {
     }
 
     public void assertAddressAvailable(String fullAddress) {
-        List<WebElement> elements = address.findElements(By.xpath("//option"));
+        List<WebElement> elements = addressList.findElements(By.xpath("//option"));
         log.error("Found optional elements : {} ", elements.size());
 
         waitFor(ExpectedConditions.numberOfElementsToBeMoreThan(By.xpath("//option"), 1));
 
-        elements = address.findElements(By.xpath("//option"));
+        elements = addressList.findElements(By.xpath("//option"));
         log.error("Found optional elements : {} ", elements.size());
 
         Assertions.assertThat(
                 elements.stream().anyMatch(x -> fullAddress.equals(x.getText()))
         ).isTrue();
+    }
+
+    public void clickCloseOnCookiePanel() {
+        cookiePanelcloseButton.click();
     }
 }

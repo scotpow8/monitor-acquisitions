@@ -21,4 +21,9 @@ public class QuoteStepDefinitions {
         quotePage.submit();
     }
 
+    @When("I click Continue on popup")
+    public void I_click_Continue_on_popup() throws Throwable {
+        quotePage.clickContinueOnPopup();
+    }
+
 }

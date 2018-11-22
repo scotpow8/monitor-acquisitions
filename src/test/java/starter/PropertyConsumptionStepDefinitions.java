@@ -16,15 +16,13 @@ public class PropertyConsumptionStepDefinitions {
     PropertyConsumptionPage propertyConsumptionPage;
 
     @When("I enter bedrooms (.*)")
-    public void I_enter_bedrooms(String postcode) throws Throwable {
-        log.error("I_enter_postcode {}", postcode);
-        propertyConsumptionPage.inputBedrooms(1);
+    public void I_enter_bedrooms(int noOfBedrooms) throws Throwable {
+        propertyConsumptionPage.inputBedrooms(noOfBedrooms);
     }
 
     @Then("I enter people (.*)")
-    public void I_enter_people(String fullAddress) throws Throwable {
-        log.error("I_must_see_my_address {}", fullAddress);
-        propertyConsumptionPage.inputPeople(2);
+    public void I_enter_people(int noOfPeople) throws Throwable {
+        propertyConsumptionPage.inputPeople(noOfPeople);
     }
 
     @Then("I enter property type (.*)")

@@ -15,7 +15,6 @@ import java.util.List;
 import java.util.Optional;
 
 @Slf4j
-@DefaultUrl("https://www.scottishpower.co.uk/energyquote.process?execution=e2s1")
 public class PropertyConsumptionPage extends PageObject {
 
     @FindBy(id = "bedrooms")
@@ -24,10 +23,10 @@ public class PropertyConsumptionPage extends PageObject {
     @FindBy(id = "people")
     WebElementFacade people;
 
-    @FindBy(id = "propertyType")
+    @FindBy(id = "propertytype")
     WebElementFacade propertyType;
 
-    @FindBy(xpath = "//form[@id='getAQuote']/div/input[@type='submit']")
+    @FindBy(xpath = "//button[text() = 'Generate quote']")
     WebElement submitButton;
 
     public void submit() {

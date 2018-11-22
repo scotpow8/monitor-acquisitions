@@ -17,7 +17,8 @@
         <encoding>UTF-8</encoding>
         <tags></tags>
         <parallel.tests>4</parallel.tests>
-        <webdriver.base.url></webdriver.base.url>
+        <webdriver.base.url>https://quote.scottishpower.co.uk/#/acquisitions</webdriver.base.url>
+        <webdriver.chrome.driver>${basedir}/native/chromedriver.exe</webdriver.chrome.driver>
     </properties>
 
     <repositories>
@@ -124,6 +125,7 @@
                     </includes>
                     <systemPropertyVariables>
                         <webdriver.base.url>${webdriver.base.url}</webdriver.base.url>
+                        <webdriver.chrome.driver>${webdriver.chrome.driver}</webdriver.chrome.driver>
                     </systemPropertyVariables>
                     <parallel>classes</parallel>
                     <threadCount>${parallel.tests}</threadCount>
