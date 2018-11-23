@@ -1,4 +1,4 @@
-package starter;
+package starter.steps;
 
 import cucumber.api.java.en.When;
 import lombok.extern.slf4j.Slf4j;
@@ -6,11 +6,10 @@ import net.thucydides.core.annotations.Managed;
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.WebDriver;
 import starter.pages.PersonalDetailsPage;
-import starter.pages.QuotePage;
 
 import java.time.Month;
 
-import static starter.PersonalDetailsStepDefinitions.YesNo.YES;
+import static starter.steps.PersonalDetailsStepDefinitions.YesNo.YES;
 
 @Slf4j
 public class PersonalDetailsStepDefinitions {

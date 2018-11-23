@@ -1,4 +1,4 @@
-package starter;
+package starter.steps;
 
 import cucumber.api.java.en.When;
 import lombok.extern.slf4j.Slf4j;
