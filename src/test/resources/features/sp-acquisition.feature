@@ -8,9 +8,9 @@ Feature: Acquisition by Scottish Power
     And I select address 'SCOTTISHPOWER SCOTTISHPOWER HOUSE 320 ST. VINCENT STREET GLASGOW G2 5AD'
     And I submit address
 
-    And I enter property type Flat
+    When I enter property type Flat
     And I enter people 2
-    When I enter bedrooms 1
+    And I enter bedrooms 1
     And I submit property consumption
 
     And I select 1 Year tariff
