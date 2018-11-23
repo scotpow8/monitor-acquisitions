@@ -23,7 +23,7 @@ public class PropertyConsumptionPage extends PageObject {
     @FindBy(id = "people")
     WebElementFacade people;
 
-    @FindBy(id = "propertytype")
+    @FindBy(id = "propertyType")
     WebElementFacade propertyType;
 
     @FindBy(xpath = "//button[text() = 'Generate quote']")
